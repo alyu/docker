@@ -1,7 +1,7 @@
 # Docker files
 Various docker files for dev/test.
 
-## Percona XtraDB 5.6
+## Percona XtraDB Cluster 5.6 Dockerfile
 This docker file creates an image with the most recent Percona XtraDB Cluster 5.6 package installed.
 Each launched image starts a single bootstrapped Galera node. A launched image will check
 if the MySQL server's data dir needs to be initated or can be re-used.
