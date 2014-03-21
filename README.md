@@ -1,6 +1,21 @@
 # Docker files
 Various docker files for dev/test.
 
+## Base Docker files for Debian, Ubuntu and Centos
+Docker files to build minimal SSH enabled Debian, Ubuntu and Centos images.
+
+    *build image*
+    $ build-docker-image ubuntu mytag $HOME/$USER/.ssh/id_rsa.pub
+
+    *launch 5 containers, host volume mapped to /opt/data/ubuntu-N*
+    $ launch-docker-containers ubuntu mytag 5
+
+    *stop only containers named ubuntu*
+    $ stop-docker-containers ubunt*
+
+    *stop and remove containers named centos*
+    $ stop-docker-containers centos*
+
 ## Percona XtraDB Cluster 5.6 Dockerfile
 This docker file creates an image with the most recent Percona XtraDB Cluster 5.6 package installed.
 Each launched image starts a single bootstrapped Galera node. A launched image will check

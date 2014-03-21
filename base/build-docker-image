@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+[[ $# -lt 2 ]] && echo "$(basename $0) <container name> <tag> [ssh pub key]" && exit 1
+container=$1
+tag=$2
+
+ssh_key=id_rsa_pub
+[[ $# -eq 3 ]] && ssh_key=$3
+
+if [[ ! -f $ssh_key ]]; then
+    echo "No public ssh key found. Generating a new ssh key"
+    echo ""
+    ssh-keygen -t rsa -N "" -f id_rsa
+fi
+docker build -rm=true -t $USER/$container:$tag .
