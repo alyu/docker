@@ -3,7 +3,7 @@
 container=$1
 tag=$2
 
-ssh_key=id_rsa_pub
+ssh_key=id_rsa.pub
 [[ $# -eq 3 ]] && ssh_key=$3
 
 if [[ ! -f $ssh_key ]]; then
@@ -11,4 +11,4 @@ if [[ ! -f $ssh_key ]]; then
     echo ""
     ssh-keygen -t rsa -N "" -f id_rsa
 fi
-docker build -rm=true -t $USER/$container:$tag .
+docker build --rm=true -t $USER/$container:$tag .
