@@ -11,4 +11,9 @@ if [[ ! -f $ssh_key ]]; then
     echo ""
     ssh-keygen -t rsa -N "" -f id_rsa
 fi
+cp $ssh_key ${container}/
+cd $container
 docker build --rm=true -t $USER/$container:$tag .
+rm -f $ssh_key
+cd - &>/dev/null
+
