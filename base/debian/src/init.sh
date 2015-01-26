@@ -3,4 +3,4 @@ set -x
 # mount fix
 grep -v rootfs /proc/mounts > /etc/mtab
 
-/usr/bin/supervisord
+/usr/bin/supervisord -c /etc/supervisord.conf
