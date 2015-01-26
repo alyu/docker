@@ -27,6 +27,9 @@ grep -v rootfs /proc/mounts > /etc/mtab
 /usr/bin/mysqld_safe &
 
 # generate ssh keys
-[[ ! -f /etc/ssh/ssh_host_rsa_key ]] && service sshd start && service sshd stop
+if [[ ! -f /etc/ssh/ssh_host_rsa_key ]]; then
+    ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
+    ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa
+fi
 
 /usr/bin/supervisord
