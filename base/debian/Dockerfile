@@ -15,7 +15,8 @@ ADD src/ischroot /usr/bin/ischroot
 ADD src/policy-rc.d /usr/sbin/policy-rc.d
 RUN echo 'force-unsafe-io' | tee /etc/dpkg/dpkg.cfg.d/02apt-speedup
 RUN echo 'DPkg::Post-Invoke {"/bin/rm -f /var/cache/apt/archives/*.deb || true";};' | tee /etc/apt/apt.conf.d/no-cache
-RUN apt-get -y install apt-utils && apt-get -y update && apt-get -y dist-upgrade
+RUN apt-get -y update && apt-get -y dist-upgrade
+RUN apt-get -y install apt-utils
 RUN apt-get clean
 RUN rm -rf /var/cache/apt/* 
 
