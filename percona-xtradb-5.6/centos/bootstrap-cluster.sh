@@ -31,7 +31,7 @@ cnt="$(docker ps | grep $name | wc -l)"
 [[ $cnt -eq 0 ]] && echo "No galera containers running" && exit 1
 for ((i=1; i<=cnt; i++)); do
     container_id=$(docker ps | grep "$name-$i" | awk '{print $1}')
-    ip=$(docker inspect -format '{{ .NetworkSettings.IPAddress  }}' $container_id)
+    ip=$(docker inspect --format '{{ .NetworkSettings.IPAddress  }}' $container_id)
     hosts+=($ip)
     address="$ip:$port,$address"
 done

@@ -9,7 +9,7 @@ MAINTAINER Alex Yu <alex@alexyu.se>
 
 RUN yum -y update
 RUN echo 'root:root123' | chpasswd
-RUN yum -y install openssh-server openssh-clients which
+RUN yum -y install openssh-server openssh-clients which wget
 # unsafe
 #RUN sed -ri 's/#PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
@@ -25,8 +25,12 @@ ADD supervisord.conf /etc/
 RUN chown root.root /etc/supervisord.conf
 
 # epel
-RUN wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
-RUN wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+# Centos 6
+#RUN wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+#RUN wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+# Centos 7
+RUN wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+RUN wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
 RUN rpm -Uvh epel* remi-*
 
 # PXC XtraDB 5.6

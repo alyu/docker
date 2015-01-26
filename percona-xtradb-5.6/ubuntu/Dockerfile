@@ -8,6 +8,8 @@ FROM ubuntu:latest
 MAINTAINER Alex Yu <alex@alexyu.se>
 
 RUN echo 'root:root123' | chpasswd
+RUN apt-get -y update
+RUN apt-get upgrade
 RUN apt-get -y -f install openssh-server openssh-client
 #RUN sed -ri 's/#PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config

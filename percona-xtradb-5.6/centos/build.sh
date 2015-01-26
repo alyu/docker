@@ -4,4 +4,4 @@ if [[ ! -f id_rsa.pub ]]; then
     echo ""
     ssh-keygen -t rsa -N "" -f id_rsa
 fi
-docker build -rm=true -t $USER/centos:pxc56 .
+docker build --rm=true -t $USER/centos:pxc56 .
