@@ -7,6 +7,7 @@
 FROM centos:latest
 MAINTAINER Alex Yu <alex@alexyu.se>
 
+ENV container docker
 RUN yum -y update
 RUN echo 'root:root123' | chpasswd
 RUN yum -y install openssh-server openssh-clients which sudo
