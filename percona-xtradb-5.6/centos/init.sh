@@ -19,9 +19,10 @@ EOF
     /usr/bin/mysql -uroot -h127.0.0.1 < /tmp/secure.sql; rm -f /tmp/secure.sql
 
     killall -15 mysqld_safe mysqld
-    chown -R mysql.mysql /var/lib/mysql
     sleep 10s
 fi
+
+chown -R mysql.mysql /var/lib/mysql
 # mount fix
 grep -v rootfs /proc/mounts > /etc/mtab
 /usr/bin/mysqld_safe &
