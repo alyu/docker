@@ -4,7 +4,7 @@
 # DOCKER-VERSION 0.81
 #
 # tag: latest
-FROM centos:latest
+FROM centos:6
 MAINTAINER Alex Yu <alex@alexyu.se>
 
 RUN yum -y update
@@ -26,11 +26,11 @@ RUN chown root.root /etc/supervisord.conf
 
 # epel
 # Centos 6
-#RUN wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
-#RUN wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+RUN wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+RUN wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 # Centos 7
-RUN wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
-RUN wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+#RUN wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+#RUN wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
 RUN rpm -Uvh epel* remi-*
 
 # PXC XtraDB 5.6
